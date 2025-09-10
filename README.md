@@ -34,7 +34,7 @@ GETTING STARTED
 --------------------------------
 
 1. Clone the Repository
-   git clone https://github.com/your-username/courier-app.git
+   git clone https://github.com/naman-xo/courier-app.git
    cd courier-app
 
 2. Setup Backend
@@ -54,17 +54,73 @@ GETTING STARTED
    npm start
 
 --------------------------------
-DATABASE SETUP
+DATABASE SETUP GUIDE
 --------------------------------
-1. Open pgAdmin and create a database named "courierdb".
-2. Create the required tables:
-   - users (stores admin, courier admins, customers, employees)
-   - shipments (stores shipment details)
-3. Ensure "users" has a "role" column with values:
-   - admin
-   - courier_admin
-   - customer
-   - employee
+
+STEP 1: CREATE DATABASE USING SQL FILE
+
+1. Save the provided file "setup.sql" to your system.
+
+2. Run the file to automatically create the database, tables, and default admin user.
+
+   Using psql:
+   psql -U your_username -d postgres -f setup.sql
+
+   (Replace "your_username" with your PostgreSQL username.)
+
+3. This will create a database called "courierdb" with the required tables.
+
+
+STEP 2: STRUCTURE OF TABLES
+
+
+1. USERS TABLE
+   - Stores admin, courier admins, customers, and employees.
+   - Important columns:
+       id (Primary key)
+       name
+       email
+       phone
+       password (hashed)
+       role (admin / courier_admin / customer / employee)
+       courier_owner (branch name for courier admins)
+       login_id (auto-generated unique ID for courier admins)
+
+2. SHIPMENTS TABLE
+   - Stores shipment details.
+   - Important columns:
+       id (Primary key)
+       local_awb (internal shipment number)
+       partner_awb (external partner number)
+       courier_name
+       pickup_pincode / delivery_pincode
+       weight
+       price
+       status (pending, accepted, out_for_delivery, delivered)
+       user_id (who created shipment)
+       assigned_to (employee handling it)
+       sender & receiver details
+       created_at (timestamp)
+
+
+STEP 3: DEFAULT ADMIN LOGIN
+
+After setup, one admin account is created automatically:
+
+Email: admin@example.com
+Password: admin123
+
+(Password is stored securely using bcrypt hashing.)
+
+
+STEP 4: HOW TO RESET / RECREATE
+
+- If you want to reset everything:
+  1. Drop the database:
+     DROP DATABASE courierdb;
+  2. Re-run setup.sql:
+     psql -U your_username -d postgres -f setup.sql
+
 
 --------------------------------
 USAGE
