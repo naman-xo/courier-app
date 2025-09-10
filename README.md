@@ -57,70 +57,38 @@ GETTING STARTED
 DATABASE SETUP GUIDE
 --------------------------------
 
-STEP 1: CREATE DATABASE USING SQL FILE
+STEP 1: RUN THE SQL SCRIPT
 
-1. Save the provided file "setup.sql" to your system.
+1. Make sure PostgreSQL is installed and running.
 
-2. Run the file to automatically create the database, tables, and default admin user.
+2. Open a terminal and navigate to your project directory.
 
-   Using psql:
+3. Run the setup.sql file with:
    psql -U your_username -d postgres -f setup.sql
 
    (Replace "your_username" with your PostgreSQL username.)
 
-3. This will create a database called "courierdb" with the required tables.
+4. This will:
+   - Create a database called courierdb
+   - Create the required tables (users, shipments)
+   - Insert a default admin account
 
 
-STEP 2: STRUCTURE OF TABLES
 
+STEP 2: DEFAULT ADMIN LOGIN
 
-1. USERS TABLE
-   - Stores admin, courier admins, customers, and employees.
-   - Important columns:
-       id (Primary key)
-       name
-       email
-       phone
-       password (hashed)
-       role (admin / courier_admin / customer / employee)
-       courier_owner (branch name for courier admins)
-       login_id (auto-generated unique ID for courier admins)
-
-2. SHIPMENTS TABLE
-   - Stores shipment details.
-   - Important columns:
-       id (Primary key)
-       local_awb (internal shipment number)
-       partner_awb (external partner number)
-       courier_name
-       pickup_pincode / delivery_pincode
-       weight
-       price
-       status (pending, accepted, out_for_delivery, delivered)
-       user_id (who created shipment)
-       assigned_to (employee handling it)
-       sender & receiver details
-       created_at (timestamp)
-
-
-STEP 3: DEFAULT ADMIN LOGIN
-
-After setup, one admin account is created automatically:
-
-Email: admin@example.com
+Email: admin@example.com  
 Password: admin123
 
-(Password is stored securely using bcrypt hashing.)
 
+STEP 3: RESETTING DATABASE
 
-STEP 4: HOW TO RESET / RECREATE
+If you want to reset everything:
+1. Drop the database:
+   DROP DATABASE courierdb;
 
-- If you want to reset everything:
-  1. Drop the database:
-     DROP DATABASE courierdb;
-  2. Re-run setup.sql:
-     psql -U your_username -d postgres -f setup.sql
-
+2. Re-run setup.sql:
+   psql -U your_username -d postgres -f setup.sql
 
 --------------------------------
 USAGE
