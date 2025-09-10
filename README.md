@@ -23,51 +23,51 @@ FEATURES
 --------------------------------
 TECH STACK
 --------------------------------
-Frontend: React + TailwindCSS
-Backend: Node.js + Express.js
-Database: PostgreSQL
-Authentication: JWT
-API Testing: Postman
+Frontend: React + TailwindCSS  
+Backend: Node.js + Express.js  
+Database: PostgreSQL  
+Authentication: JWT  
+API Testing: Postman  
 
 --------------------------------
 GETTING STARTED
 --------------------------------
 
-1. Clone the Repository
-   git clone https://github.com/naman-xo/courier-app.git
-   cd courier-app
-
-2. Setup Backend
-   cd server
-   npm install
-
-   Create a .env file inside /server with:
-     DATABASE_URL=postgresql://yourusername:yourpassword@localhost:5432/courierdb
-     JWT_SECRET=your_jwt_secret
-
-   Start the backend:
-     npm start
-
-3. Setup Frontend
-   cd client
-   npm install
-   npm start
+1. Clone the Repository  
+   git clone https://github.com/naman-xo/courier-app.git  
+   cd courier-app  
+  
+2. Setup Backend  
+   cd server  
+   npm install  
+  
+   Create a .env file inside /server with:  
+     DATABASE_URL=postgresql://yourusername:yourpassword@localhost:5432/courierdb  
+     JWT_SECRET=your_jwt_secret  
+  
+   Start the backend:  
+     npm start  
+  
+3. Setup Frontend  
+   cd client  
+   npm install  
+   npm start  
 
 --------------------------------
 DATABASE SETUP GUIDE
 --------------------------------
-
-STEP 1: RUN THE SQL SCRIPT
+  
+STEP 1: RUN THE SQL SCRIPT  
 
 1. Make sure PostgreSQL is installed and running.
 
 2. Open a terminal and navigate to your project directory.
 
-3. Run the setup.sql file with:
-   psql -U your_username -d postgres -f setup.sql
-
-   (Replace "your_username" with your PostgreSQL username.)
-
+3. Run the setup.sql file with:  
+   psql -U your_username -d postgres -f setup.sql  
+  
+   (Replace "your_username" with your PostgreSQL username.)  
+  
 4. This will:
    - Create a database called courierdb
    - Create the required tables (users, shipments)
@@ -85,10 +85,10 @@ STEP 3: RESETTING DATABASE
 
 If you want to reset everything:
 1. Drop the database:
-   DROP DATABASE courierdb;
-
-2. Re-run setup.sql:
-   psql -U your_username -d postgres -f setup.sql
+   DROP DATABASE courierdb;  
+  
+2. Re-run setup.sql:  
+   psql -U your_username -d postgres -f setup.sql  
 
 --------------------------------
 USAGE
