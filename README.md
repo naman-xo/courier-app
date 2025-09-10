@@ -84,7 +84,7 @@ Password: admin123
 STEP 3: RESETTING DATABASE
 
 If you want to reset everything:
-1. Drop the database:
+1. Drop the database:  
    DROP DATABASE courierdb;  
   
 2. Re-run setup.sql:  
